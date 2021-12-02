@@ -1,0 +1,14 @@
+import mongoose from "mongoose";
+const connectDB = () => {
+  if (mongoose.connections[0].readyState) {
+    console.log("Already Connect!");
+    return;
+  }
+
+  mongoose.connect(process.env.MONGO_URL, (err) => {
+    if (err) throw err;
+    console.log("MongoDB Connected!");
+  });
+};
+
+export default connectDB;
